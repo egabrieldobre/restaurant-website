@@ -1,37 +1,37 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const galleryItems = [
   {
-    src: "/images/gallery-photo-03.jpg",
-    alt: "Turquoise interior seating and turquoise wall",
+    src: '/images/gallery-photo-03.jpg',
+    alt: 'Turquoise interior seating and turquoise wall',
     tall: true,
   },
   {
-    src: "/images/gallery-photo-02.jpg",
-    alt: "Guests enjoying food on the Turquoise terrace",
+    src: '/images/gallery-photo-02.jpg',
+    alt: 'Guests enjoying food on the Turquoise terrace',
     tall: true,
   },
   {
-    src: "/images/gallery-photo-07.jpg",
-    alt: "Pastry display with croissants and cakes",
+    src: '/images/gallery-photo-07.jpg',
+    alt: 'Pastry display with croissants and cakes',
     tall: false,
   },
   {
-    src: "/images/gallery-photo-06.jpg",
-    alt: "Brunch buffet spread at TURQUOISE",
+    src: '/images/gallery-photo-06.jpg',
+    alt: 'Brunch buffet spread at TURQUOISE',
     tall: false,
   },
   {
-    src: "/images/gallery-photo-09.jpg",
-    alt: "Guests enjoying brunch buffet and shared dishes",
+    src: '/images/gallery-photo-09.jpg',
+    alt: 'Guests enjoying brunch buffet and shared dishes',
     tall: false,
   },
   {
-    src: "/images/gallery-photo-10.jpg",
-    alt: "TURQUOISE bakery and brunch exterior sign",
+    src: '/images/gallery-photo-10.jpg',
+    alt: 'TURQUOISE bakery and brunch exterior sign',
     tall: false,
   },
 ];
@@ -63,8 +63,9 @@ export default function Gallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.45, delay: index * 0.05 }}
-              className={`relative overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(31,41,55,0.08)] ${item.tall ? "row-span-2" : ""
-                }`}
+              className={`relative overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(31,41,55,0.08)] ${
+                item.tall ? 'row-span-2' : ''
+              }`}
             >
               <Image
                 src={item.src}

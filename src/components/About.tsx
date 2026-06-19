@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { motion } from "framer-motion";
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const highlights = [
-  "Fresh pastries baked every day",
-  "Artisan bakery with quality ingredients",
-  "Specialty coffee crafted with care",
-  "Relaxed brunch atmosphere for slow mornings",
-  "Warm, friendly service",
+  'Fresh pastries baked every day',
+  'Artisan bakery with quality ingredients',
+  'Specialty coffee crafted with care',
+  'Relaxed brunch atmosphere for slow mornings',
+  'Warm, friendly service',
 ];
 
 export default function About() {
@@ -28,9 +28,9 @@ export default function About() {
             A bakery and brunch café shaped around fresh, beautiful moments.
           </h2>
           <p className="mt-6 max-w-xl text-base leading-8 text-[#6b7280] sm:text-lg">
-            TURQUOISE.bakery&brunch brings together buttery pastries, artisan breads,
-            specialty coffee, and a Mediterranean-inspired brunch rhythm in a space
-            that feels premium yet welcoming.
+            TURQUOISE.bakery&brunch brings together buttery pastries, artisan
+            breads, specialty coffee, and a Mediterranean-inspired brunch rhythm
+            in a space that feels premium yet welcoming.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">

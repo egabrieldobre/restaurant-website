@@ -1,24 +1,28 @@
-import { Award, BadgeCheck, Leaf, Shield } from "lucide-react";
+import { Award, BadgeCheck, Leaf, Shield } from 'lucide-react';
 
 const advantages = [
   {
-    title: "Experiență",
-    description: "Ani de activitate și proiecte finalizate cu succes în toată țara.",
+    title: 'Experiență',
+    description:
+      'Ani de activitate și proiecte finalizate cu succes în toată țara.',
     icon: Award,
   },
   {
-    title: "Materiale Premium",
-    description: "Folosim produse certificate, testate pentru durabilitate și performanță.",
+    title: 'Materiale Premium',
+    description:
+      'Folosim produse certificate, testate pentru durabilitate și performanță.',
     icon: BadgeCheck,
   },
   {
-    title: "Eficiență Energetică",
-    description: "Reduci pierderile termice și optimizezi consumul pe termen lung.",
+    title: 'Eficiență Energetică',
+    description:
+      'Reduci pierderile termice și optimizezi consumul pe termen lung.',
     icon: Leaf,
   },
   {
-    title: "Garanție",
-    description: "Lucrări executate responsabil, cu garanție și suport post-implementare.",
+    title: 'Garanție',
+    description:
+      'Lucrări executate responsabil, cu garanție și suport post-implementare.',
     icon: Shield,
   },
 ];
@@ -28,7 +32,9 @@ export default function WhyChoose() {
     <section className="bg-[#0F172A] py-20 text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="mb-3 text-sm font-semibold tracking-wider text-[#F59E0B] uppercase">Avantaje</p>
+          <p className="mb-3 text-sm font-semibold tracking-wider text-[#F59E0B] uppercase">
+            Avantaje
+          </p>
           <h2 className="text-4xl font-bold sm:text-5xl">De ce să ne alegi</h2>
         </div>
 
@@ -45,7 +51,9 @@ export default function WhyChoose() {
                   <Icon size={24} />
                 </div>
                 <h3 className="mb-2 text-xl font-bold">{item.title}</h3>
-                <p className="text-sm leading-7 text-slate-200">{item.description}</p>
+                <p className="text-sm leading-7 text-slate-200">
+                  {item.description}
+                </p>
               </article>
             );
           })}

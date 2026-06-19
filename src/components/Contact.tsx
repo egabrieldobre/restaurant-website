@@ -1,13 +1,21 @@
-"use client";
+'use client';
 
-import { Clock3, MapPin, Mail, Phone } from "lucide-react";
-import { motion } from "framer-motion";
+import { Clock3, MapPin, Mail, Phone } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const contactDetails = [
-  { icon: MapPin, label: "Address", value: "Strada Amaradia 73, Craiova 200170" },
-  { icon: Phone, label: "Phone", value: "0774 907 780" },
-  { icon: Mail, label: "Email", value: "hello@turquoisebakerybrunch.com (placeholder)" },
-  { icon: Clock3, label: "Hours", value: "Daily, 9:00 - 22:00" },
+  {
+    icon: MapPin,
+    label: 'Address',
+    value: 'Strada Amaradia 73, Craiova 200170',
+  },
+  { icon: Phone, label: 'Phone', value: '0774 907 780' },
+  {
+    icon: Mail,
+    label: 'Email',
+    value: 'hello@turquoisebakerybrunch.com (placeholder)',
+  },
+  { icon: Clock3, label: 'Hours', value: 'Daily, 9:00 - 22:00' },
 ];
 
 export default function Contact() {
@@ -51,7 +59,9 @@ export default function Contact() {
                       <div className="text-sm font-semibold tracking-[0.18em] text-[#0097a7] uppercase">
                         {item.label}
                       </div>
-                      <div className="mt-1 text-base text-[#374151]">{item.value}</div>
+                      <div className="mt-1 text-base text-[#374151]">
+                        {item.value}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -67,9 +77,13 @@ export default function Contact() {
             className="overflow-hidden rounded-[2rem] border border-[#e5efee] bg-white shadow-[0_18px_50px_rgba(31,41,55,0.06)]"
           >
             <div className="border-b border-[#eef2f1] p-6">
-              <h3 className="text-2xl font-semibold text-[#1f2937]">Find us on Google Maps</h3>
+              <h3 className="text-2xl font-semibold text-[#1f2937]">
+                Find us on Google Maps
+              </h3>
               <p className="mt-2 text-sm leading-7 text-[#6b7280]">
-                Public profile details point to Amaradia 73 in Craiova. Replace this with the exact map pin if the venue adds a Google Maps listing.
+                Public profile details point to Amaradia 73 in Craiova. Replace
+                this with the exact map pin if the venue adds a Google Maps
+                listing.
               </p>
             </div>
             <iframe

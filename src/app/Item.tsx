@@ -1,6 +1,6 @@
-"use client"; // if Item will use state, hooks, or events
+'use client'; // if Item will use state, hooks, or events
 
-import React from "react";
+import React from 'react';
 
 // export default function Item() {
 //     return (
@@ -11,40 +11,43 @@ import React from "react";
 // }
 
 type ItemProps = {
-    name?: string;
+  name?: string;
 };
 
 type ItemState = {
-    clicks: number;
+  clicks: number;
 };
 
 class Item extends React.Component<ItemProps, ItemState> {
-    constructor(props: ItemProps) {
-        super(props);
+  constructor(props: ItemProps) {
+    super(props);
 
-        this.state = {
-            clicks: 0,
-        };
-    }
+    this.state = {
+      clicks: 0,
+    };
+  }
 
-    clickMe() {
-        this.setState((prevState) => ({
-            clicks: prevState.clicks + 1,
-        }));
-    }
+  clickMe() {
+    this.setState((prevState) => ({
+      clicks: prevState.clicks + 1,
+    }));
+  }
 
-    render() {
-        const name = this.props.name ?? "echipa noastră";
+  render() {
+    const name = this.props.name ?? 'echipa noastră';
 
-        return (
-            <div>
-                <h1 onClick={() => this.clickMe()} className="text-xl font-semibold text-blue-600">
-                    Hello from {name}!
-                </h1>
-                <span>{this.state.clicks} is the number of clicks.</span>
-            </div>
-        );
-    }
+    return (
+      <div>
+        <h1
+          onClick={() => this.clickMe()}
+          className="text-xl font-semibold text-blue-600"
+        >
+          Hello from {name}!
+        </h1>
+        <span>{this.state.clicks} is the number of clicks.</span>
+      </div>
+    );
+  }
 }
 
 export default Item;

@@ -2,15 +2,17 @@
 @import "tailwindcss";
 
 :root {
-  --brand-primary: #2563eb;
-  --brand-secondary: #0f172a;
-  --brand-accent: #f59e0b;
-  --background: #ffffff;
-  --text-main: #0f172a;
+  --brand-primary: #40e0d0;
+  --brand-secondary: #0097a7;
+  --brand-accent: #f7f4ef;
+  --brand-surface: #ffffff;
+  --text-main: #1f2937;
+  --text-soft: #6b7280;
 }
 
 html {
   scroll-behavior: smooth;
+  background: var(--brand-accent);
 }
 
 * {
@@ -19,16 +21,26 @@ html {
 
 body {
   margin: 0;
-  background: radial-gradient(circle at 15% -15%, #dbeafe 0%, #ffffff 35%);
+  background:
+    radial-gradient(circle at top left, rgba(64, 224, 208, 0.16), transparent 28%),
+    radial-gradient(circle at top right, rgba(0, 151, 167, 0.12), transparent 24%),
+    linear-gradient(180deg, #ffffff 0%, #f8faf9 42%, #f7f4ef 100%);
   color: var(--text-main);
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-inter), sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-rajdhani), sans-serif;
+  font-family: var(--font-playfair-display), serif;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 @keyframes fade-up {
@@ -53,4 +65,8 @@ h4 {
 
 .animation-delay-300 {
   animation-delay: 0.3s;
+}
+
+.section-heading {
+  font-family: var(--font-playfair-display), serif;
 }

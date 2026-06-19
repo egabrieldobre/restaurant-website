@@ -1,121 +1,82 @@
 "use client";
 
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
-const galleryImages = [
-  "/images/foam-1.jpg",
-  "/images/foam-2.jpg",
-  "/images/foam-3.jpg",
-  "/images/foam-4.jpg",
-  "/images/foam-5.jpg",
-  "/images/foam-6.webp",
+const galleryItems = [
+  {
+    src: "/images/gallery-photo-03.jpg",
+    alt: "Turquoise interior seating and turquoise wall",
+    tall: true,
+  },
+  {
+    src: "/images/gallery-photo-02.jpg",
+    alt: "Guests enjoying food on the Turquoise terrace",
+    tall: true,
+  },
+  {
+    src: "/images/gallery-photo-07.jpg",
+    alt: "Pastry display with croissants and cakes",
+    tall: false,
+  },
+  {
+    src: "/images/gallery-photo-06.jpg",
+    alt: "Brunch buffet spread at TURQUOISE",
+    tall: false,
+  },
+  {
+    src: "/images/gallery-photo-09.jpg",
+    alt: "Guests enjoying brunch buffet and shared dishes",
+    tall: false,
+  },
+  {
+    src: "/images/gallery-photo-10.jpg",
+    alt: "TURQUOISE bakery and brunch exterior sign",
+    tall: false,
+  },
 ];
 
 export default function Gallery() {
-  const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const hasActiveImage = activeIndex !== null;
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setActiveIndex(null);
-      }
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
-
-  const nextImage = () => {
-    setActiveIndex((current) => {
-      if (current === null) {
-        return 0;
-      }
-
-      return (current + 1) % galleryImages.length;
-    });
-  };
-
-  const previousImage = () => {
-    setActiveIndex((current) => {
-      if (current === null) {
-        return 0;
-      }
-
-      return (current - 1 + galleryImages.length) % galleryImages.length;
-    });
-  };
-
   return (
-    <section id="galerie" className="mx-auto max-w-7xl scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
-      <div className="mx-auto mb-12 max-w-3xl text-center">
-        <p className="mb-3 text-sm font-semibold tracking-wider text-[#2563EB] uppercase">Galerie</p>
-        <h2 className="text-4xl font-bold text-[#0F172A] sm:text-5xl">Lucrări recente</h2>
-      </div>
+    <section id="gallery" className="scroll-mt-24 py-20 sm:py-24">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto mb-12 max-w-3xl text-center"
+        >
+          <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#0097a7] uppercase">
+            Real restaurant moments
+          </p>
+          <h2 className="section-heading text-4xl font-semibold text-[#1f2937] sm:text-5xl">
+            Real dishes, coffee, and atmosphere from TURQUOISE.bakery&brunch.
+          </h2>
+        </motion.div>
 
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-        {galleryImages.map((image, index) => (
-          <button
-            key={image}
-            type="button"
-            onClick={() => setActiveIndex(index)}
-            className="group relative h-36 overflow-hidden rounded-2xl sm:h-48 md:h-56"
-            aria-label={`Deschide imaginea ${index + 1}`}
-          >
-            <Image
-              src={image}
-              alt={`Imagine lucrare de izolație ${index + 1}`}
-              fill
-              unoptimized
-              className="object-cover transition duration-300 group-hover:scale-110"
-            />
-            <span className="absolute inset-0 bg-[#0F172A]/0 transition group-hover:bg-[#0F172A]/30" />
-          </button>
-        ))}
-      </div>
-
-      {hasActiveImage ? (
-        <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4">
-          <button
-            type="button"
-            onClick={() => setActiveIndex(null)}
-            className="absolute right-5 top-5 rounded-full bg-white p-2 text-slate-800"
-            aria-label="Închide galeria"
-          >
-            <X size={22} />
-          </button>
-
-          <button
-            type="button"
-            onClick={previousImage}
-            className="absolute left-3 rounded-full bg-white/90 p-2 text-slate-800 sm:left-8"
-            aria-label="Imaginea anterioară"
-          >
-            <ChevronLeft size={22} />
-          </button>
-
-          <div className="relative h-[68vh] w-full max-w-4xl overflow-hidden rounded-2xl">
-            <Image
-              src={galleryImages[activeIndex]}
-              alt={`Imagine mărită lucrare ${activeIndex + 1}`}
-              fill
-              unoptimized
-              className="object-cover"
-            />
-          </div>
-
-          <button
-            type="button"
-            onClick={nextImage}
-            className="absolute right-3 rounded-full bg-white/90 p-2 text-slate-800 sm:right-8"
-            aria-label="Imaginea următoare"
-          >
-            <ChevronRight size={22} />
-          </button>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 auto-rows-[180px] md:auto-rows-[220px]">
+          {galleryItems.map((item, index) => (
+            <motion.div
+              key={item.src}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.45, delay: index * 0.05 }}
+              className={`relative overflow-hidden rounded-[1.75rem] shadow-[0_18px_50px_rgba(31,41,55,0.08)] ${item.tall ? "row-span-2" : ""
+                }`}
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover transition duration-500 hover:scale-105"
+                sizes="(max-width: 768px) 50vw, 33vw"
+              />
+            </motion.div>
+          ))}
         </div>
-      ) : null}
+      </div>
     </section>
   );
 }

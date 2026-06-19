@@ -2,16 +2,11 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-
-const highlights = [
-  'Fresh pastries baked every day',
-  'Artisan bakery with quality ingredients',
-  'Specialty coffee crafted with care',
-  'Relaxed brunch atmosphere for slow mornings',
-  'Warm, friendly service',
-];
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function About() {
+  const { t } = useLanguage();
+
   return (
     <section id="about" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[0.95fr_1.05fr] lg:px-8">
@@ -22,19 +17,17 @@ export default function About() {
           transition={{ duration: 0.55 }}
         >
           <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#0097a7] uppercase">
-            Welcome to TURQUOISE
+            {t.about.badge}
           </p>
           <h2 className="section-heading text-4xl font-semibold text-[#1f2937] sm:text-5xl">
-            A bakery and brunch café shaped around fresh, beautiful moments.
+            {t.about.heading}
           </h2>
           <p className="mt-6 max-w-xl text-base leading-8 text-[#6b7280] sm:text-lg">
-            TURQUOISE.bakery&brunch brings together buttery pastries, artisan
-            breads, specialty coffee, and a Mediterranean-inspired brunch rhythm
-            in a space that feels premium yet welcoming.
+            {t.about.description}
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            {highlights.map((item) => (
+            {t.about.highlights.map((item) => (
               <div
                 key={item}
                 className="rounded-2xl border border-[#e5efee] bg-white px-4 py-4 text-sm text-[#374151] shadow-sm"

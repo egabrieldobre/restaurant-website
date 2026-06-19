@@ -2,35 +2,18 @@
 
 import { Coffee, Heart, Sparkles, Sunrise } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
-const experiences = [
-  {
-    title: 'Freshly baked every day',
-    description:
-      'A morning-first bakery rhythm with pastries and breads baked with care.',
-    icon: Sunrise,
-  },
-  {
-    title: 'Cozy atmosphere',
-    description:
-      'Airy interiors, soft textures, and a calm environment for lingering conversations.',
-    icon: Heart,
-  },
-  {
-    title: 'Quality coffee',
-    description:
-      'Balanced espresso drinks and specialty coffee prepared for everyday rituals.',
-    icon: Coffee,
-  },
-  {
-    title: 'Perfect brunch moments',
-    description:
-      'Colorful plates and a relaxed pace that make daytime dining feel special.',
-    icon: Sparkles,
-  },
-];
+const icons = [Sunrise, Heart, Coffee, Sparkles];
 
 export default function Experience() {
+  const { t } = useLanguage();
+
+  const experiences = t.experience.items.map((item, i) => ({
+    ...item,
+    icon: icons[i],
+  }));
+
   return (
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -42,10 +25,10 @@ export default function Experience() {
           className="mx-auto mb-12 max-w-3xl text-center"
         >
           <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#0097a7] uppercase">
-            Experience
+            {t.experience.badge}
           </p>
           <h2 className="section-heading text-4xl font-semibold text-[#1f2937] sm:text-5xl">
-            Four details that shape the TURQUOISE experience.
+            {t.experience.heading}
           </h2>
         </motion.div>
 

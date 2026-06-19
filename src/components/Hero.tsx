@@ -2,8 +2,11 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   return (
     <section id="home" className="scroll-mt-24">
       <div className="mx-auto grid min-h-[calc(100vh-4.5rem)] max-w-7xl items-center gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:px-8 lg:py-16">
@@ -14,16 +17,14 @@ export default function Hero() {
           className="max-w-2xl"
         >
           <p className="mb-5 inline-flex rounded-full border border-[#d8f2ee] bg-white px-4 py-2 text-xs font-semibold tracking-[0.28em] text-[#0097a7] uppercase shadow-sm">
-            Fresh Bakery • Specialty Coffee • Brunch Experience
+            {t.hero.badge}
           </p>
           <h1 className="text-5xl leading-[0.98] font-semibold text-[#1f2937] sm:text-6xl lg:text-7xl">
-            TURQUOISE.
-            <span className="block text-[#0097a7]">bakery&brunch</span>
+            {t.hero.heading}
+            <span className="block text-[#0097a7]">{t.hero.subheading}</span>
           </h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-[#6b7280] sm:text-xl">
-            A bright Mediterranean-inspired café in Craiova where homemade
-            cakes, a la carte brunch, dinner service, and specialty coffee come
-            together in a calm, modern space.
+            {t.hero.description}
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
@@ -31,22 +32,18 @@ export default function Hero() {
               href="#menu"
               className="inline-flex items-center justify-center rounded-full bg-[#0097a7] px-6 py-3.5 text-sm font-semibold text-white shadow-lg shadow-[#0097a7]/20 transition hover:-translate-y-0.5 hover:bg-[#007f8c]"
             >
-              View Menu
+              {t.hero.viewMenu}
             </a>
             <a
               href="#contact"
               className="inline-flex items-center justify-center rounded-full border border-[#d6e8e7] bg-white px-6 py-3.5 text-sm font-semibold text-[#1f2937] transition hover:border-[#0097a7] hover:text-[#0097a7]"
             >
-              Visit Us
+              {t.hero.visitUs}
             </a>
           </div>
 
           <div className="mt-10 grid max-w-lg grid-cols-3 gap-4 text-center">
-            {[
-              { value: '1,614', label: 'Instagram followers' },
-              { value: 'Amaradia 73', label: 'Craiova location' },
-              { value: '9-22', label: 'open daily' },
-            ].map((item, index) => (
+            {t.hero.stats.map((item, index) => (
               <motion.div
                 key={item.label}
                 initial={{ opacity: 0, y: 12 }}
@@ -85,11 +82,10 @@ export default function Hero() {
             <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
               <div className="max-w-sm rounded-3xl border border-white/25 bg-white/20 p-5 text-white backdrop-blur-md">
                 <p className="text-xs font-semibold tracking-[0.24em] uppercase text-white/85">
-                  Signature atmosphere
+                  {t.hero.signatureAtmosphere}
                 </p>
                 <p className="mt-3 text-sm leading-6 text-white/90">
-                  A light-filled setting designed for slow mornings, colorful
-                  plates, and effortless social moments.
+                  {t.hero.signatureDescription}
                 </p>
               </div>
             </div>

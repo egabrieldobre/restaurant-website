@@ -2,35 +2,22 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
-const menuCategories = [
-  {
-    title: 'Bakery',
-    description:
-      'Homemade cakes, croissants, and pastries inspired by the public profile highlights.',
-    items: ['Homemade cakes', 'Croissants', 'Pastries'],
-    image: '/images/featured-bakery.jpg',
-    imageClassName: 'object-center',
-  },
-  {
-    title: 'Brunch',
-    description:
-      'A la carte brunch plates and relaxed daytime dishes for slow meals and long conversations.',
-    items: ['A la carte', 'Brunch plates', 'Dinner-ready dishes'],
-    image: '/images/featured-brunch.jpg',
-    imageClassName: 'object-center',
-  },
-  {
-    title: 'Coffee',
-    description:
-      'Coffee service for breakfast, brunch, and evening visits in the Amaradia 73 space.',
-    items: ['Specialty coffee', 'Cappuccino', 'All-day coffee'],
-    image: '/images/featured-coffee.jpg',
-    imageClassName: 'object-[32%_48%]',
-  },
+const menuImages = [
+  { image: '/images/featured-bakery.jpg', imageClassName: 'object-center' },
+  { image: '/images/featured-brunch.jpg', imageClassName: 'object-center' },
+  { image: '/images/featured-coffee.jpg', imageClassName: 'object-[32%_48%]' },
 ];
 
 export default function FeaturedMenu() {
+  const { t } = useLanguage();
+
+  const categories = t.menu.categories.map((cat, i) => ({
+    ...cat,
+    ...menuImages[i],
+  }));
+
   return (
     <section id="menu" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -42,15 +29,15 @@ export default function FeaturedMenu() {
           className="mx-auto mb-12 max-w-3xl text-center"
         >
           <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#0097a7] uppercase">
-            Featured menu
+            {t.menu.badge}
           </p>
           <h2 className="section-heading text-4xl font-semibold text-[#1f2937] sm:text-5xl">
-            A simple menu built around bakery, brunch, and coffee.
+            {t.menu.heading}
           </h2>
         </motion.div>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {menuCategories.map((category, index) => (
+          {categories.map((category, index) => (
             <motion.article
               key={category.title}
               initial={{ opacity: 0, y: 18 }}

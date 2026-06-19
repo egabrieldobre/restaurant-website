@@ -5,17 +5,19 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
-
-const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
-];
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { lang, setLang, t } = useLanguage();
+
+  const navItems = [
+    { label: t.nav.home, href: '#home' },
+    { label: t.nav.about, href: '#about' },
+    { label: t.nav.menu, href: '#menu' },
+    { label: t.nav.gallery, href: '#gallery' },
+    { label: t.nav.contact, href: '#contact' },
+  ];
 
   return (
     <motion.header
@@ -48,6 +50,29 @@ export default function Navbar() {
           ))}
         </nav>
 
+        <div className="hidden items-center gap-3 md:flex">
+          <button
+            type="button"
+            onClick={() => setLang('ro')}
+            className={`rounded-full px-3 py-1 text-xs font-semibold transition ${lang === 'ro'
+                ? 'bg-[#0097a7] text-white'
+                : 'border border-[#d6e8e7] text-[#374151] hover:border-[#0097a7] hover:text-[#0097a7]'
+              }`}
+          >
+            RO
+          </button>
+          <button
+            type="button"
+            onClick={() => setLang('en')}
+            className={`rounded-full px-3 py-1 text-xs font-semibold transition ${lang === 'en'
+                ? 'bg-[#0097a7] text-white'
+                : 'border border-[#d6e8e7] text-[#374151] hover:border-[#0097a7] hover:text-[#0097a7]'
+              }`}
+          >
+            EN
+          </button>
+        </div>
+
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-full border border-[#d6e8e7] bg-white p-2 text-[#1f2937] shadow-sm md:hidden"
@@ -79,6 +104,28 @@ export default function Navbar() {
                   {item.label}
                 </a>
               ))}
+              <div className="mt-3 flex gap-2 px-4">
+                <button
+                  type="button"
+                  onClick={() => setLang('ro')}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${lang === 'ro'
+                      ? 'bg-[#0097a7] text-white'
+                      : 'border border-[#d6e8e7] text-[#374151]'
+                    }`}
+                >
+                  RO
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang('en')}
+                  className={`rounded-full px-3 py-1.5 text-xs font-semibold transition ${lang === 'en'
+                      ? 'bg-[#0097a7] text-white'
+                      : 'border border-[#d6e8e7] text-[#374151]'
+                    }`}
+                >
+                  EN
+                </button>
+              </div>
             </div>
           </motion.nav>
         ) : null}

@@ -2,23 +2,18 @@
 
 import { Clock3, MapPin, Mail, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
-const contactDetails = [
-  {
-    icon: MapPin,
-    label: 'Address',
-    value: 'Strada Amaradia 73, Craiova 200170',
-  },
-  { icon: Phone, label: 'Phone', value: '0774 907 780' },
-  {
-    icon: Mail,
-    label: 'Email',
-    value: 'hello@turquoisebakerybrunch.com (placeholder)',
-  },
-  { icon: Clock3, label: 'Hours', value: 'Daily, 9:00 - 22:00' },
-];
+const contactIcons = [MapPin, Phone, Mail, Clock3];
 
 export default function Contact() {
+  const { t } = useLanguage();
+
+  const contactDetails = t.contact.details.map((detail, i) => ({
+    ...detail,
+    icon: contactIcons[i],
+  }));
+
   return (
     <section id="contact" className="scroll-mt-24 py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -30,10 +25,10 @@ export default function Contact() {
           className="mx-auto mb-12 max-w-3xl text-center"
         >
           <p className="mb-4 text-sm font-semibold tracking-[0.28em] text-[#0097a7] uppercase">
-            Location & contact
+            {t.contact.badge}
           </p>
           <h2 className="section-heading text-4xl font-semibold text-[#1f2937] sm:text-5xl">
-            Visit the café, get in touch, or find us on the map.
+            {t.contact.heading}
           </h2>
         </motion.div>
 
@@ -78,12 +73,10 @@ export default function Contact() {
           >
             <div className="border-b border-[#eef2f1] p-6">
               <h3 className="text-2xl font-semibold text-[#1f2937]">
-                Find us on Google Maps
+                {t.contact.mapTitle}
               </h3>
               <p className="mt-2 text-sm leading-7 text-[#6b7280]">
-                Public profile details point to Amaradia 73 in Craiova. Replace
-                this with the exact map pin if the venue adds a Google Maps
-                listing.
+                {t.contact.mapDescription}
               </p>
             </div>
             <iframe

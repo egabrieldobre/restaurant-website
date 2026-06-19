@@ -2,25 +2,23 @@
 
 import { ArrowUpRight, Camera, ThumbsUp } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
-const socialLinks = [
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/turquoise.bakery_brunch/',
-    icon: Camera,
-    description:
-      '128 posts, 1,614 followers, 392 following, with homemade cakes and brunch-and-dinner updates.',
-  },
-  {
-    label: 'Facebook',
-    href: 'https://www.facebook.com/p/TURQUOISEbakerybrunch-61560796895610/',
-    icon: ThumbsUp,
-    description:
-      'Public page details show Amaradia 73, Craiova, and daily service from 9:00 to 22:00.',
-  },
+const socialIcons = [Camera, ThumbsUp];
+const socialHrefs = [
+  'https://www.instagram.com/turquoise.bakery_brunch/',
+  'https://www.facebook.com/p/TURQUOISEbakerybrunch-61560796895610/',
 ];
 
 export default function SocialSection() {
+  const { t } = useLanguage();
+
+  const socialLinks = t.social.links.map((link, i) => ({
+    ...link,
+    href: socialHrefs[i],
+    icon: socialIcons[i],
+  }));
+
   return (
     <section className="py-20 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -33,22 +31,16 @@ export default function SocialSection() {
             className="rounded-[2rem] border border-[#d8f2ee] bg-[#0097a7] p-8 text-white shadow-[0_24px_60px_rgba(0,151,167,0.18)]"
           >
             <p className="text-sm font-semibold tracking-[0.28em] text-white/80 uppercase">
-              Public profile snapshot
+              {t.social.badge}
             </p>
             <h2 className="section-heading mt-4 text-4xl font-semibold sm:text-5xl">
-              TURQUOISE in Craiova, captured from the live social pages.
+              {t.social.heading}
             </h2>
             <p className="mt-5 max-w-xl text-base leading-8 text-white/85">
-              Instagram currently shows 128 posts, 1,614 followers, and 392
-              following. The public bio highlights homemade cakes, menu a la
-              carte, and brunch and dinner.
+              {t.social.description}
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {[
-                { value: '128', label: 'posts' },
-                { value: '1,614', label: 'followers' },
-                { value: '392', label: 'following' },
-              ].map((item) => (
+              {t.social.stats.map((item) => (
                 <div
                   key={item.label}
                   className="rounded-2xl border border-white/20 bg-white/10 px-4 py-4 text-center"

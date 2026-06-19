@@ -1,8 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function VideoSection() {
+  const { t } = useLanguage();
+
   return (
     <section id="video" className="py-16 bg-white px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
@@ -14,10 +17,10 @@ export default function VideoSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Meet TURQUOISE
+            {t.video.heading}
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            See what makes our bakery & brunch special
+            {t.video.subheading}
           </p>
         </motion.div>
 

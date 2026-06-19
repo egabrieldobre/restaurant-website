@@ -1,14 +1,11 @@
-import Image from 'next/image';
+'use client';
 
-const quickLinks = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Menu', href: '#menu' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Contact', href: '#contact' },
-];
+import Image from 'next/image';
+import { useLanguage } from '@/i18n/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="border-t border-[#e5efee] bg-white py-14 text-[#374151]">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-3 lg:px-8">
@@ -21,17 +18,16 @@ export default function Footer() {
             className="mb-4 h-20 w-20"
           />
           <p className="mt-2 max-w-xs text-sm leading-7 text-[#6b7280]">
-            Fresh pastries, specialty coffee, and a bright brunch experience
-            with a Mediterranean feel.
+            {t.footer.description}
           </p>
         </div>
 
         <div>
           <h4 className="mb-4 text-lg font-semibold text-[#1f2937]">
-            Navigation
+            {t.footer.navigation}
           </h4>
           <ul className="space-y-2 text-sm">
-            {quickLinks.map((link) => (
+            {t.footer.links.map((link) => (
               <li key={link.href}>
                 <a href={link.href} className="transition hover:text-[#0097a7]">
                   {link.label}
@@ -42,7 +38,9 @@ export default function Footer() {
         </div>
 
         <div>
-          <h4 className="mb-4 text-lg font-semibold text-[#1f2937]">Social</h4>
+          <h4 className="mb-4 text-lg font-semibold text-[#1f2937]">
+            {t.footer.social}
+          </h4>
           <ul className="space-y-2 text-sm text-[#6b7280]">
             <li>
               <a
@@ -68,14 +66,13 @@ export default function Footer() {
           <div className="mt-6 space-y-2 text-sm text-[#6b7280]">
             <div>Strada Amaradia 73, Craiova 200170</div>
             <div>0774 907 780</div>
-            <div>Daily, 9:00 - 22:00</div>
+            <div>{t.footer.hours}</div>
           </div>
         </div>
       </div>
 
       <div className="mx-auto mt-10 max-w-7xl border-t border-[#eef2f1] px-4 pt-6 text-center text-xs text-[#9ca3af] sm:px-6 lg:px-8">
-        © {new Date().getFullYear()} TURQUOISE.bakery&brunch. All rights
-        reserved.
+        © {new Date().getFullYear()} TURQUOISE.bakery&brunch. {t.footer.copyright}
       </div>
     </footer>
   );
